@@ -88,6 +88,12 @@ export function TeamSection() {
     <section id="ekip" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
+          <div className="flex justify-center mb-8">
+            <div className="relative w-32 h-32 md:w-40 md:h-40">
+              <Image src="/nfk-2025-logo.png" alt="'25 NFK Harezmi" fill className="object-contain" />
+            </div>
+          </div>
+
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">'25 NFK Hârezmi Ekibimiz</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">

@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowDown } from "lucide-react"
-import Image from "next/image"
 
 export function HeroSection() {
   const scrollToNext = () => {
@@ -19,15 +18,6 @@ export function HeroSection() {
     >
       <div className="container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
-          <div className="flex justify-center mb-8">
-            <Image
-              src="/nfk-harezmi-logo.png"
-              alt="'25 NFK Hârezmî Logo"
-              width={300}
-              height={150}
-              className="h-32 w-auto md:h-48"
-            />
-          </div>
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold text-balance">
               Harezmi <span className="text-primary">Eğitim Modeli</span>
