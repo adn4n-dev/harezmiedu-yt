@@ -36,6 +36,20 @@ export function EducationModel() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Harezmi Eğitim Modeli</h2>
+
+            <div className="max-w-4xl mx-auto mb-8 p-6 bg-primary/10 rounded-lg border-2 border-primary/30">
+              <h3 className="text-xl font-semibold mb-3 text-primary">Genel Amaç</h3>
+              <p className="text-lg text-foreground text-pretty leading-relaxed">
+                Harezmi eğitim modelinin öğrenciler açısından genel amacı; yaşam problemlerini tanımlayarak bunlara
+                yenilikçi ve etkili çözümler üretmek üzere Ar-Ge yöntemlerini işbirlikçi olarak uygulamaları sürecinde
+                <span className="font-semibold text-primary">
+                  {" "}
+                  algoritmik düşünme, bilişsel ve üst bilişsel, sosyal-duygusal ve pratik ve fiziksel becerilerini
+                </span>{" "}
+                geliştirmeleridir.
+              </p>
+            </div>
+
             <div className="max-w-4xl mx-auto mb-8 p-6 bg-primary/5 rounded-lg border border-primary/20">
               <h3 className="text-xl font-semibold mb-3 text-primary">Misyonumuz</h3>
               <p className="text-lg text-muted-foreground text-pretty">
