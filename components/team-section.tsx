@@ -40,7 +40,7 @@ export function TeamSection() {
     },
     {
       role: "Danışman Öğretmenler",
-      count: 5,
+      count: 4,
       description: "Deneyimli eğitimciler ve mentorlar",
     },
   ]
