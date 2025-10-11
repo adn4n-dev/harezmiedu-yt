@@ -9,11 +9,21 @@ export function AboutHarezmi() {
               <span className="font-semibold">Doğum:</span> Harezm, 780 |{" "}
               <span className="font-semibold">Ölüm tarihi ve yeri:</span> Bağdat, Irak, 850
             </div>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
-              Hârizmi ya da tam künyesiyle Ebû Ca'fer Muhammed bin Mûsâ el-Hârizmi, matematik, gök bilim, coğrafya ve
-              algoritma alanlarında çalışmış Fars bilim insanı. Hârizmi 780 yılında Harezm bölgesinin Hive şehrinde
-              dünyaya gelmiştir. 850 yılında Bağdat'ta ölmüştür.
-            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+            <div className="flex justify-center">
+              <div className="relative w-full max-w-md aspect-[3/4] rounded-lg overflow-hidden border-2 border-primary/20 shadow-lg">
+                <img src="/harezmi-portrait.jpg" alt="Hârezmî Portresi" className="w-full h-full object-cover" />
+              </div>
+            </div>
+            <div className="space-y-4">
+              <p className="text-lg text-muted-foreground text-pretty">
+                Hârizmi ya da tam künyesiyle Ebû Ca'fer Muhammed bin Mûsâ el-Hârizmi, matematik, gök bilim, coğrafya ve
+                algoritma alanlarında çalışmış Fars bilim insanı. Hârizmi 780 yılında Harezm bölgesinin Hive şehrinde
+                dünyaya gelmiştir. 850 yılında Bağdat'ta ölmüştür.
+              </p>
+            </div>
           </div>
 
           <div className="mt-12 p-8 rounded-lg bg-accent/10 border border-accent/20">
