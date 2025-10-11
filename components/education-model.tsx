@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Target, Lightbulb, Users, BookOpen, TrendingUp } from "lucide-react"
+import Image from "next/image"
 
 export function EducationModel() {
   const values = [
@@ -34,6 +35,20 @@ export function EducationModel() {
     <section id="model" className="py-20 md:py-32 bg-secondary/30">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-12">
+            <div className="relative w-32 h-32 md:w-40 md:h-40">
+              <Image src="/meb-logo-official.png" alt="T.C. Milli Eğitim Bakanlığı" fill className="object-contain" />
+            </div>
+            <div className="relative w-64 h-32 md:w-80 md:h-40">
+              <Image
+                src="/harezmi-model-logo.jpg"
+                alt="Harezmi Eğitim Modeli - İnsan için birlikte düşün, tasarla, üret"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Harezmi Eğitim Modeli</h2>
 
