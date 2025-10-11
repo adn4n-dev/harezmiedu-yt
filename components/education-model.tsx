@@ -41,7 +41,7 @@ export function EducationModel() {
             </div>
             <div className="relative w-64 h-32 md:w-80 md:h-40">
               <Image
-                src="/harezmi-model-logo.jpg"
+                src="/harezmi-model-logo-clean.png"
                 alt="Harezmi Eğitim Modeli - İnsan için birlikte düşün, tasarla, üret"
                 fill
                 className="object-contain"
