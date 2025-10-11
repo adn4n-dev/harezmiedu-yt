@@ -13,11 +13,11 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
+        <TeamSection />
+        <ApplicationCalendar />
         <AboutHarezmi />
         <EducationModel />
         <FiveFoundations />
-        <ApplicationCalendar />
-        <TeamSection />
         <PartnersSection />
       </main>
       <footer className="border-t border-border bg-card py-8">
