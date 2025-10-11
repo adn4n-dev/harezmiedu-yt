@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, FlaskConical, Languages, Palette, GraduationCap } from "lucide-react"
+import { BookOpen, FlaskConical, Languages, Palette, GraduationCap, Sparkles } from "lucide-react"
 import Image from "next/image"
 
 export function TeamSection() {
@@ -85,56 +85,70 @@ export function TeamSection() {
   ]
 
   return (
-    <section id="ekip" className="py-20 md:py-32 bg-secondary/30">
-      <div className="container mx-auto px-4">
+    <section id="ekip" className="py-32 md:py-40 relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-float" />
+        <div
+          className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float"
+          style={{ animationDelay: "2s" }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-center mb-8">
-            <div className="relative w-32 h-32 md:w-40 md:h-40">
-              <Image src="/nfk-2025-logo.png" alt="'25 NFK Harezmi" fill className="object-contain" />
+          <div className="flex justify-center mb-12 animate-float">
+            <div className="relative w-40 h-40 md:w-52 md:h-52 hover-scale">
+              <Image src="/nfk-2025-logo.png" alt="'25 NFK Harezmi" fill className="object-contain drop-shadow-2xl" />
             </div>
           </div>
 
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">'25 NFK Hârezmi Ekibimiz</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 text-gradient leading-tight">
+              '25 NFK Hârezmi Ekibimiz
+            </h2>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
               Farklı disiplinlerden gelen yetenekli öğrenciler ve deneyimli mentorlardan oluşan dinamik ekibimiz
             </p>
           </div>
 
-          <div className="mb-16">
-            <h3 className="text-2xl font-semibold mb-8 text-center flex items-center justify-center gap-2">
-              <GraduationCap className="h-7 w-7 text-primary" />
+          <div className="mb-20">
+            <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center flex items-center justify-center gap-3">
+              <GraduationCap className="h-9 w-9 text-accent" />
               Öğretmen Ekibimiz
             </h3>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               {teachers.map((teacher, index) => {
                 const Icon = teacher.icon
                 return (
                   <Card
                     key={index}
-                    className="p-6 hover:shadow-lg transition-all hover:-translate-y-1 bg-card border-border"
+                    className="p-8 glass hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-accent/50 group"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="relative w-24 h-24 flex-shrink-0">
+                    <div className="flex items-start gap-6">
+                      <div className="relative w-28 h-28 flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
                         <Image
                           src={teacher.photo || "/placeholder.svg"}
                           alt={teacher.name}
                           fill
-                          className="object-cover rounded-lg"
+                          className="object-cover rounded-2xl ring-4 ring-accent/20"
                         />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h4 className="text-lg font-semibold mb-1">{teacher.name}</h4>
-                        <p className="text-sm text-muted-foreground mb-2">{teacher.title}</p>
-                        <div className="space-y-1">
-                          <Badge variant="outline" className="text-xs">
+                        <h4 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">
+                          {teacher.name}
+                        </h4>
+                        <p className="text-sm text-muted-foreground mb-3">{teacher.title}</p>
+                        <div className="space-y-2">
+                          <Badge variant="outline" className="text-xs font-semibold">
                             {teacher.degree}
                           </Badge>
-                          <div className="flex items-center gap-2 mt-2">
-                            <div className={`p-1.5 rounded ${teacher.color}`}>
-                              <Icon className="h-3.5 w-3.5" />
+                          <div className="flex items-center gap-3 mt-3">
+                            <div
+                              className={`p-2 rounded-xl ${teacher.color} group-hover:scale-110 transition-transform`}
+                            >
+                              <Icon className="h-4 w-4" />
                             </div>
-                            <p className="text-xs text-muted-foreground">{teacher.field}</p>
+                            <p className="text-xs text-muted-foreground font-medium">{teacher.field}</p>
                           </div>
                         </div>
                       </div>
@@ -145,34 +159,41 @@ export function TeamSection() {
             </div>
           </div>
 
-          <div className="mb-16">
-            <h3 className="text-2xl font-semibold mb-8 text-center">Ekibimiz Hakkında</h3>
-            <div className="grid md:grid-cols-3 gap-6">
+          <div className="mb-20">
+            <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center">Ekibimiz Hakkında</h3>
+            <div className="grid md:grid-cols-3 gap-8">
               {teamMembers.map((member, index) => (
-                <Card key={index} className="p-6 text-center bg-card border-border">
-                  <div className="text-3xl font-bold text-primary mb-2">{member.count}</div>
-                  <h4 className="text-lg font-semibold mb-2">{member.role}</h4>
-                  <p className="text-sm text-muted-foreground">{member.description}</p>
+                <Card
+                  key={index}
+                  className="p-10 text-center glass hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-accent/50 group"
+                >
+                  <div className="text-6xl font-black text-gradient mb-4 group-hover:scale-110 transition-transform">
+                    {member.count}
+                  </div>
+                  <h4 className="text-xl font-bold mb-3">{member.role}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{member.description}</p>
                 </Card>
               ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="text-2xl font-semibold mb-8 text-center">Temsil Edeceğimiz Disiplinler</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="mb-20">
+            <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center">Temsil Edeceğimiz Disiplinler</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {disciplines.map((discipline, index) => {
                 const Icon = discipline.icon
                 return (
                   <Card
                     key={index}
-                    className="p-8 hover:shadow-lg transition-all hover:-translate-y-1 bg-card border-border"
+                    className="p-10 glass hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-accent/50 group"
                   >
-                    <div className="flex items-center space-x-4">
-                      <div className={`p-4 rounded-lg ${discipline.color} flex-shrink-0`}>
-                        <Icon className="h-8 w-8" />
+                    <div className="flex items-center space-x-6">
+                      <div
+                        className={`p-5 rounded-2xl ${discipline.color} flex-shrink-0 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}
+                      >
+                        <Icon className="h-10 w-10" />
                       </div>
-                      <span className="text-lg font-medium text-balance">{discipline.name}</span>
+                      <span className="text-lg font-bold text-balance leading-tight">{discipline.name}</span>
                     </div>
                   </Card>
                 )
@@ -180,24 +201,28 @@ export function TeamSection() {
             </div>
           </div>
 
-          <Card className="mt-12 p-8 bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
-            <div className="text-center space-y-4">
-              <h3 className="text-2xl font-semibold">Ekibimize Katılın</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-pretty">
+          <Card className="p-12 glass border-2 border-accent/30 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/20 via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="text-center space-y-6 relative z-10">
+              <div className="flex justify-center mb-4">
+                <Sparkles className="h-12 w-12 text-accent animate-pulse" />
+              </div>
+              <h3 className="text-4xl font-black text-gradient">Ekibimize Katılın</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-pretty text-lg leading-relaxed">
                 Bilime tutkulu, araştırmacı ve yenilikçi düşünceye sahip öğrencileri ekibimizde görmekten mutluluk
                 duyarız. Birlikte öğrenelim, birlikte gelişelim!
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
-                <Badge variant="secondary" className="text-sm">
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-6">
+                <Badge variant="secondary" className="text-sm py-2 px-4 hover-scale cursor-pointer">
                   Disiplinler Arası Çalışma
                 </Badge>
-                <Badge variant="secondary" className="text-sm">
+                <Badge variant="secondary" className="text-sm py-2 px-4 hover-scale cursor-pointer">
                   Proje Tabanlı Öğrenme
                 </Badge>
-                <Badge variant="secondary" className="text-sm">
+                <Badge variant="secondary" className="text-sm py-2 px-4 hover-scale cursor-pointer">
                   Mentorluk Desteği
                 </Badge>
-                <Badge variant="secondary" className="text-sm">
+                <Badge variant="secondary" className="text-sm py-2 px-4 hover-scale cursor-pointer">
                   Ulusal Yarışmalar
                 </Badge>
               </div>

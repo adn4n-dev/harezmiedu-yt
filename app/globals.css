@@ -122,32 +122,77 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Modern gradient background */
-    background: linear-gradient(135deg, oklch(0.98 0.02 240) 0%, oklch(0.96 0.03 280) 50%, oklch(0.97 0.02 320) 100%);
+    /* More dramatic animated gradient background */
+    background: linear-gradient(
+      135deg,
+      oklch(0.98 0.03 240) 0%,
+      oklch(0.96 0.04 280) 25%,
+      oklch(0.97 0.03 320) 50%,
+      oklch(0.96 0.04 280) 75%,
+      oklch(0.98 0.03 240) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
     background-attachment: fixed;
+  }
+
+  @keyframes gradientShift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 }
 
 /* Glass morphism utility classes */
 @layer utilities {
   .glass {
-    background: oklch(1 0 0 / 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid oklch(1 0 0 / 0.2);
+    background: oklch(1 0 0 / 0.6);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid oklch(1 0 0 / 0.3);
+    box-shadow: 0 8px 32px 0 oklch(0 0 0 / 0.1);
   }
 
   .glass-dark {
-    background: oklch(0.15 0.01 240 / 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid oklch(0.25 0.01 240 / 0.3);
+    background: oklch(0.15 0.01 240 / 0.6);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid oklch(0.25 0.01 240 / 0.4);
+    box-shadow: 0 8px 32px 0 oklch(0 0 0 / 0.3);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, oklch(0.25 0.05 240), oklch(0.75 0.15 85));
+    background: linear-gradient(135deg, oklch(0.25 0.05 240), oklch(0.75 0.15 85), oklch(0.6 0.12 200));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Adding floating animation */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Adding scale-up hover effect */
+  .hover-scale {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
   }
 }
