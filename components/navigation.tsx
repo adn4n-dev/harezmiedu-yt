@@ -28,6 +28,7 @@ export function Navigation() {
   const navItems = [
     { id: "harezmi", label: "Harezmi Kimdir?" },
     { id: "model", label: "Eğitim Modeli" },
+    { id: "bes-zemin", label: "Beş Zemin" },
     { id: "takvim", label: "Takvim" },
     { id: "ekip", label: "Ekibimiz" },
   ]
@@ -42,9 +43,22 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           <button
             onClick={() => scrollToSection("hero")}
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
-            <Image src="/logo.jpg" alt="NFK Hârezmî Logo" width={80} height={80} className="h-12 w-auto" />
+            <Image
+              src="/nfk-harezmi-logo.png"
+              alt="'25 NFK Hârezmî Logo"
+              width={120}
+              height={60}
+              className="h-10 w-auto"
+            />
+            <Image
+              src="/nfkal-logo.png"
+              alt="Necip Fazıl Kısakürek Anadolu Lisesi Logo"
+              width={40}
+              height={40}
+              className="h-10 w-10"
+            />
           </button>
 
           {/* Desktop Navigation */}

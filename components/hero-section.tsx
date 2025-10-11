@@ -20,7 +20,13 @@ export function HeroSection() {
       <div className="container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="flex justify-center mb-8">
-            <Image src="/logo.jpg" alt="NFK Hârezmî Logo" width={200} height={200} className="h-32 w-auto md:h-40" />
+            <Image
+              src="/nfk-harezmi-logo.png"
+              alt="'25 NFK Hârezmî Logo"
+              width={300}
+              height={150}
+              className="h-32 w-auto md:h-48"
+            />
           </div>
           <div className="space-y-4">
             <h1 className="text-5xl md:text-7xl font-bold text-balance">
@@ -34,7 +40,6 @@ export function HeroSection() {
                 DÜŞÜN, TASARLA, ÜRET
               </p>
             </div>
-            {/* </CHANGE> */}
             <p className="text-xl md:text-2xl text-muted-foreground text-balance">
               Bilimin öncüsü Harezmi'nin izinde, geleceğin bilim insanlarını yetiştiriyoruz
             </p>
