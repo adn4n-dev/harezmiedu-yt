@@ -4,10 +4,14 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const isHomePage = pathname === "/"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +22,10 @@ export function Navigation() {
   }, [])
 
   const scrollToSection = (id: string) => {
+    if (!isHomePage) {
+      window.location.href = `/#${id}`
+      return
+    }
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
@@ -41,10 +49,7 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <button
-            onClick={() => scrollToSection("hero")}
-            className="flex items-center gap-3 hover:opacity-80 transition-opacity"
-          >
+          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <Image
               src="/nfk-harezmi-logo.png"
               alt="'25 NFK Hârezmî Logo"
@@ -59,7 +64,7 @@ export function Navigation() {
               height={40}
               className="h-10 w-10"
             />
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
@@ -72,6 +77,12 @@ export function Navigation() {
                 {item.label}
               </button>
             ))}
+            <Link
+              href="/calismalarmiz"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Çalışmalarımız
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,6 +109,13 @@ export function Navigation() {
                   {item.label}
                 </button>
               ))}
+              <Link
+                href="/calismalarmiz"
+                className="text-left text-sm text-muted-foreground hover:text-foreground transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Çalışmalarımız
+              </Link>
             </div>
           </div>
         )}

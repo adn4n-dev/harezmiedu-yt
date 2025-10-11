@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { BookOpen, FlaskConical, Languages, Palette } from "lucide-react"
+import { BookOpen, FlaskConical, Languages, Palette, GraduationCap } from "lucide-react"
+import Image from "next/image"
 
 export function TeamSection() {
   const disciplines = [
@@ -25,7 +26,45 @@ export function TeamSection() {
       color: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
     },
   ]
-  // </CHANGE>
+
+  const teachers = [
+    {
+      name: "Melek YERLİ",
+      title: "Görsel Sanatlar Öğretmeni",
+      degree: "Yüksek Lisans (Tezli)",
+      field: "Fen ve Matematik Bilimleri",
+      icon: FlaskConical,
+      color: "bg-green-500/10 text-green-600 dark:text-green-400",
+      photo: "/melek-yerli.jpg",
+    },
+    {
+      name: "Murat ANIL",
+      title: "Felsefe Öğretmeni",
+      degree: "Yüksek Lisans (Tezli)",
+      field: "Sosyal Bilimler ve Dil Bilimleri",
+      icon: Languages,
+      color: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+      photo: "/murat-anil.png",
+    },
+    {
+      name: "Bilgiser TOSUN",
+      title: "Rehberlik Öğretmeni",
+      degree: "Lisans",
+      field: "Sanat ve Tasarım ile Spor Bilimleri",
+      icon: Palette,
+      color: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
+      photo: "/bilgiser-tosun.jpg",
+    },
+    {
+      name: "İsmail KARADİKEN",
+      title: "Bilgisayar ve Öğretim Teknolojileri Öğretmeni",
+      degree: "Yüksek Lisans (Tezsiz)",
+      field: "Bilgisayar Bilimi",
+      icon: BookOpen,
+      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+      photo: "/ismail-karadiken.jpg",
+    },
+  ]
 
   const teamMembers = [
     {
@@ -54,6 +93,50 @@ export function TeamSection() {
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
               Farklı disiplinlerden gelen yetenekli öğrenciler ve deneyimli mentorlardan oluşan dinamik ekibimiz
             </p>
+          </div>
+
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center flex items-center justify-center gap-2">
+              <GraduationCap className="h-7 w-7 text-primary" />
+              Öğretmen Ekibimiz
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {teachers.map((teacher, index) => {
+                const Icon = teacher.icon
+                return (
+                  <Card
+                    key={index}
+                    className="p-6 hover:shadow-lg transition-all hover:-translate-y-1 bg-card border-border"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="relative w-24 h-24 flex-shrink-0">
+                        <Image
+                          src={teacher.photo || "/placeholder.svg"}
+                          alt={teacher.name}
+                          fill
+                          className="object-cover rounded-lg"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-lg font-semibold mb-1">{teacher.name}</h4>
+                        <p className="text-sm text-muted-foreground mb-2">{teacher.title}</p>
+                        <div className="space-y-1">
+                          <Badge variant="outline" className="text-xs">
+                            {teacher.degree}
+                          </Badge>
+                          <div className="flex items-center gap-2 mt-2">
+                            <div className={`p-1.5 rounded ${teacher.color}`}>
+                              <Icon className="h-3.5 w-3.5" />
+                            </div>
+                            <p className="text-xs text-muted-foreground">{teacher.field}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                )
+              })}
+            </div>
           </div>
 
           <div className="mb-16">
@@ -89,7 +172,6 @@ export function TeamSection() {
                 )
               })}
             </div>
-            {/* </CHANGE> */}
           </div>
 
           <Card className="mt-12 p-8 bg-gradient-to-br from-primary/10 to-accent/10 border-primary/20">
