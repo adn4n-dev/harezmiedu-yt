@@ -2,6 +2,7 @@
 
 import { Calendar, Users, Award, Lightbulb } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 
 interface TimelineItem {
   date: string
@@ -58,6 +59,8 @@ const categoryConfig = {
 }
 
 export function ProjectsTimeline() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="relative">
@@ -102,23 +105,28 @@ export function ProjectsTimeline() {
 
                     {item.images && item.images.length > 0 && (
                       <div
-                        className={`mt-4 grid gap-3 ${
+                        className={`mt-6 grid gap-4 ${
                           item.images.length === 1
                             ? "grid-cols-1"
                             : item.images.length === 2
-                              ? "grid-cols-2"
-                              : "grid-cols-2 md:grid-cols-3"
+                              ? "grid-cols-1 md:grid-cols-2"
+                              : "grid-cols-1 md:grid-cols-2"
                         }`}
                       >
                         {item.images.map((image, imgIndex) => (
-                          <div key={imgIndex} className="rounded-lg overflow-hidden border border-border">
-                            <Image
-                              src={image || "/placeholder.svg"}
-                              alt={`${item.title} - ${imgIndex + 1}`}
-                              width={400}
-                              height={300}
-                              className="w-full h-auto object-cover"
-                            />
+                          <div
+                            key={imgIndex}
+                            className="rounded-lg overflow-hidden border-2 border-border hover:border-primary transition-all cursor-pointer group"
+                            onClick={() => setSelectedImage(image)}
+                          >
+                            <div className="relative aspect-[4/3] overflow-hidden">
+                              <Image
+                                src={image || "/placeholder.svg"}
+                                alt={`${item.title} - ${imgIndex + 1}`}
+                                fill
+                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              />
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -133,6 +141,42 @@ export function ProjectsTimeline() {
           })}
         </div>
       </div>
+
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div className="relative max-w-6xl w-full h-full flex items-center justify-center">
+            <Image
+              src={selectedImage || "/placeholder.svg"}
+              alt="Büyütülmüş görsel"
+              width={1200}
+              height={900}
+              className="max-w-full max-h-full object-contain rounded-lg"
+            />
+            <button
+              className="absolute top-4 right-4 text-white bg-black/50 hover:bg-black/70 rounded-full p-3 transition-colors"
+              onClick={() => setSelectedImage(null)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Empty state message */}
       <div className="mt-16 text-center p-8 border border-dashed border-border rounded-lg">
