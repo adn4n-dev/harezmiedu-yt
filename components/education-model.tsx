@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card"
 import { Target, Lightbulb, Users, BookOpen, TrendingUp } from "lucide-react"
+import Image from "next/image"
 
 export function EducationModel() {
   const values = [
@@ -35,6 +36,15 @@ export function EducationModel() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
+            <div className="flex justify-center mb-6">
+              <Image
+                src="/WhatsApp_Görsel_2025-10-10_saat_18.53.53_cabcaaa4-removebg-preview.png"
+                alt="Harezmi Eğitim Modeli Logo"
+                width={400}
+                height={200}
+                className="h-auto w-auto max-w-md"
+              />
+            </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Harezmi Eğitim Modeli</h2>
 
             <div className="max-w-4xl mx-auto mb-8 p-6 bg-primary/10 rounded-lg border-2 border-primary/30">
