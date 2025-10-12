@@ -36,7 +36,7 @@ export function EducationModel() {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="flex justify-center mb-6">
+            <div className="flex flex-col items-center mb-6 space-y-4">
               <Image
                 src="/WhatsApp_Görsel_2025-10-10_saat_18.53.53_cabcaaa4-removebg-preview.png"
                 alt="Harezmi Eğitim Modeli Logo"
@@ -44,9 +44,9 @@ export function EducationModel() {
                 height={200}
                 className="h-auto w-auto max-w-md"
               />
+              <p className="text-lg md:text-xl text-muted-foreground font-medium">Kütahya Necip Fazıl Kısakürek Anadolu Lisesi</p>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Harezmi Eğitim Modeli</h2>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium mb-6">Kütahya Necip Fazıl Kısakürek Anadolu Lisesi</p>
 
             <div className="max-w-4xl mx-auto mb-8 p-6 bg-primary/10 rounded-lg border-2 border-primary/30">
               <h3 className="text-xl font-semibold mb-3 text-primary">Genel Amaç</h3>
