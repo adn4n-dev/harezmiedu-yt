@@ -46,6 +46,7 @@ export function EducationModel() {
               />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Harezmi Eğitim Modeli</h2>
+            <p className="text-lg md:text-xl text-muted-foreground font-medium mb-6">Kütahya Necip Fazıl Kısakürek Anadolu Lisesi</p>
 
             <div className="max-w-4xl mx-auto mb-8 p-6 bg-primary/10 rounded-lg border-2 border-primary/30">
               <h3 className="text-xl font-semibold mb-3 text-primary">Genel Amaç</h3>

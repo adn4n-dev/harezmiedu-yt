@@ -26,6 +26,9 @@ export function HeroSection() {
                   <span className="block text-foreground">Harezmi</span>
                   <span className="block text-gradient">Eğitim Modeli</span>
                 </h1>
+                <p className="text-lg md:text-xl text-foreground/60 font-medium mt-4">
+                  Kütahya Necip Fazıl Kısakürek Anadolu Lisesi
+                </p>
               </div>
 
               <div className="py-8 space-y-3">
