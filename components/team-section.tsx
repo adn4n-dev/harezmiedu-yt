@@ -106,6 +106,9 @@ export function TeamSection() {
             <h2 className="text-5xl md:text-7xl font-bold mb-6 text-gradient leading-tight">
               '25 NFK Hârezmi Ekibimiz
             </h2>
+            <p className="text-xl md:text-2xl text-foreground/80 font-medium mb-4">
+              Kütahya Necip Fazıl Kısakürek Anadolu Lisesi
+            </p>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
               Farklı disiplinlerden gelen yetenekli öğrenciler ve deneyimli mentorlardan oluşan dinamik ekibimiz
             </p>
