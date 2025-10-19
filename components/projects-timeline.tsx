@@ -2,7 +2,8 @@
 
 import { Calendar, Users, Award, Lightbulb } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { supabase, type Project } from "@/lib/supabase"
 
 interface TimelineItem {
   date: string
@@ -11,25 +12,6 @@ interface TimelineItem {
   category: "proje" | "etkinlik" | "basari" | "arastirma"
   images?: string[]
 }
-
-const timelineItems: TimelineItem[] = [
-  {
-    date: "Eylül 2025",
-    title: "İlk Toplantımızdan Kareler",
-    description:
-      "Eylül ayı içinde Harezmi Eğitim Modeli için başvurumuzu yaptık. Başvuru öncesi öğretmen ekibimizle toplandık.",
-    category: "etkinlik",
-    images: ["/teacher-meeting-1.jpg", "/teacher-meeting-2.jpg", "/teacher-meeting-3.jpg"],
-  },
-  {
-    date: "Eylül 2025",
-    title: "Okul Müdürümüz Fazlı KARABULUT ile Bilgilendirme Toplantısı",
-    description:
-      "Başvurudan sonra Okul Müdürümüz Fazlı KARABULUT ile bilgilendirme toplantısı gerçekleştirdik. Harezmi Eğitim Modeli hakkında detaylı bilgilendirme yapıldı ve süreç planlandı.",
-    category: "etkinlik",
-    images: ["/principal-meeting-1.jpg", "/principal-meeting-2.jpg"],
-  },
-]
 
 const categoryConfig = {
   proje: {
@@ -60,6 +42,41 @@ const categoryConfig = {
 
 export function ProjectsTimeline() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    loadProjects()
+  }, [])
+
+  const loadProjects = async () => {
+    setLoading(true)
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .order("order_index", { ascending: true })
+
+    if (!error && data) {
+      setProjects(data)
+    }
+    setLoading(false)
+  }
+
+  const timelineItems: TimelineItem[] = projects.map((project) => ({
+    date: project.date,
+    title: project.title,
+    description: project.description,
+    category: "proje",
+    images: project.image_url ? [project.image_url] : undefined,
+  }))
+
+  if (loading) {
+    return (
+      <div className="max-w-4xl mx-auto text-center py-12">
+        <p className="text-muted-foreground">Yükleniyor...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -179,9 +196,15 @@ export function ProjectsTimeline() {
       )}
 
       {/* Empty state message */}
-      <div className="mt-16 text-center p-8 border border-dashed border-border rounded-lg">
-        <p className="text-muted-foreground">Daha fazla proje ve çalışma eklenecektir. Takipte kalın!</p>
-      </div>
+      {timelineItems.length === 0 ? (
+        <div className="text-center p-12 border border-dashed border-border rounded-lg">
+          <p className="text-muted-foreground text-lg">Henüz proje eklenmemiş. Yeni projeler yakında eklenecektir!</p>
+        </div>
+      ) : (
+        <div className="mt-16 text-center p-8 border border-dashed border-border rounded-lg">
+          <p className="text-muted-foreground">Daha fazla proje ve çalışma eklenecektir. Takipte kalın!</p>
+        </div>
+      )}
     </div>
   )
 }
