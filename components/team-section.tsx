@@ -69,12 +69,12 @@ export function TeamSection() {
   const teamMembers = [
     {
       role: "Proje Koordinatörü",
-      count: 2,
+      count: 1,
       description: "Ekip liderliği ve proje yönetimi",
     },
     {
       role: "Araştırmacı Öğrenciler",
-      count: 12,
+      count: 15,
       description: "Farklı disiplinlerden yetenekli öğrenciler",
     },
     {
