@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Sparkles } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
   const scrollToNext = () => {
@@ -22,6 +23,18 @@ export function HeroSection() {
                   <Sparkles className="h-5 w-5 text-accent" />
                   <span className="text-sm font-medium text-foreground/80">2025 NFK Harezmi</span>
                 </div>
+
+                <div className="flex justify-center mb-8">
+                  <Image
+                    src="/harezmi-logo.png"
+                    alt="Harezmi Eğitim Modeli Logo"
+                    width={500}
+                    height={200}
+                    className="w-full max-w-md md:max-w-lg object-contain"
+                    priority
+                  />
+                </div>
+
                 <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold text-balance leading-[0.95] tracking-tight">
                   <span className="block text-foreground">Harezmi</span>
                   <span className="block text-gradient">Eğitim Modeli</span>
